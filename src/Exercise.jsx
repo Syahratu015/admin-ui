@@ -1,31 +1,28 @@
-import React from 'react';
-import UserCard from './UserCard';
+import React from "react";
+import PostCard from "./PostCard";
+import { staticPosts } from "./data"; 
 
-export default function Exercise() {
+function Exercise() {
+  const posts = staticPosts; 
+
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
-      <h1 className="text-4xl font-bold text-blue-600 mb-8 text-center">User Cards</h1>
-
-      <div className="flex justify-center gap-6">
-        <UserCard
-          name="Syahratu"
-          email="ratu@example.com"
-          street="Jl. Melati No. 10"
-          city="Pekalongan"
-        />
-        <UserCard
-          name="Andhara"
-          email="andhara@example.com"
-          street="Jl. Mawar No. 12"
-          city="Semarang"
-        />
-        <UserCard
-          name="Satriani"
-          email="satriani@example.com"
-          street="Jl. Kenanga No. 7"
-          city="Jakarta"
-        />
+    <>
+      <div className="min-h-screen bg-gray-100 p-6">
+        <h1 className="text-3xl font-bold text-center mb-6 text-red-700">
+          Post Cards 
+        </h1>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-7xl mx-auto">
+          {posts.map((post) => (
+            <PostCard 
+              key={post.id} 
+              title={post.title}
+              body={post.body}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
+
+export default Exercise;
